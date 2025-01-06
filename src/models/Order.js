@@ -43,8 +43,9 @@ const orderSchema = new mongoose.Schema(
     },
     delivery: {
       status: {
-        type: Boolean,
-        default: false,
+        type: String,
+        enum: ["pending", "in_transit", "delivered"],
+        default: "pending",
       },
       reason: {
         type: String,

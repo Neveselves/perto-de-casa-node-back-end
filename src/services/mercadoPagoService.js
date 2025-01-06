@@ -45,9 +45,9 @@ class MercadoPagoService {
         currency_id: "BRL",
       })),
       back_urls: {
-        success: `${process.env.FRONTEND_URL}/payment/success`,
-        failure: `${process.env.FRONTEND_URL}/payment/failure`,
-        pending: `${process.env.FRONTEND_URL}/payment/pending`,
+        success: `${process.env.FRONTEND_URL}payment/success`,
+        //failure: `${process.env.FRONTEND_URL}/payment/failure`,
+        // pending: `${process.env.FRONTEND_URL}/payment/pending`,
       },
       //notification_url: `${process.env.API_URL}/api/payment/webhook`, só aceita htttps
       auto_return: "approved",
