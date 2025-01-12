@@ -72,7 +72,7 @@ class MercadoPagoService {
         options: { timeout: 5000 },
       });
 
-      const preference = new Preference(client);
+      const preference = new Payment(client);
       const payment = await preference.get(data.data.id);
       console.log(payment, "payment");
       const order = await Order.findById(payment.body.external_reference);
