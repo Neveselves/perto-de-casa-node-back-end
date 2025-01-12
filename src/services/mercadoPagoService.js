@@ -49,7 +49,8 @@ class MercadoPagoService {
         //failure: `${process.env.FRONTEND_URL}/payment/failure`,
         // pending: `${process.env.FRONTEND_URL}/payment/pending`,
       },
-      //notification_url: `${process.env.API_URL}/api/payment/webhook`, só aceita htttps
+      notification_url:
+        "https://perto-de-casa-node-back-end.onrender.com/api/payment/webhook",
       auto_return: "approved",
     };
 
@@ -57,7 +58,7 @@ class MercadoPagoService {
 
     return responsePayment;
   }
-  
+
   async getAllOrders() {
     return await Order.find();
   }
