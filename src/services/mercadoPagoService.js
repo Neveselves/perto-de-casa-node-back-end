@@ -36,6 +36,7 @@ class MercadoPagoService {
           number: 11223344, //Number.parseInt(userNumPhone),
         },
       },
+      external_reference: order._id,
       items: order.items.map((item) => ({
         id: item.id,
         title: item.title,
