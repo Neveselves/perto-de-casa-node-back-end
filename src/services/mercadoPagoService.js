@@ -73,7 +73,7 @@ class MercadoPagoService {
       // const preference = new Payment(client);
       // const payment = await preference.get(data.data.id);
 
-      const payment = await mercadopago.Payment.findById(data.data.id);
+      const payment = await mercadopago.Payment.get(data.data.id);
 
       const order = await Order.findById(payment.body.external_reference);
       if (!order) {
