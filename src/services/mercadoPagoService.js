@@ -72,8 +72,9 @@ class MercadoPagoService {
 
       const instancePayment = new Payment(client);
       const payment = await instancePayment.get({ id: data.data.id });
-
-      const order = await Order.findById(payment.body.external_reference);
+      console.lo(payment, "retorno payment");
+      const order = await Order.findById(payment.external_reference);
+      console.log(order, "order dentro do webhook");
       if (!order) {
         throw new Error("Order not found");
       }
