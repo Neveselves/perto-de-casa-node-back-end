@@ -45,8 +45,8 @@ class MercadoPagoService {
         currency_id: "BRL",
       })),
       back_urls: {
-        success: `${process.env.FRONTEND_URL}payment/success`,
-        //failure: `${process.env.FRONTEND_URL}/payment/failure`,
+        success: `http://192.168.100.18:8100/payment/success`,
+        //failure: `${process.env.FRONTEND_URL}/payment/failure`,${process.env.FRONTEND_URL}
         // pending: `${process.env.FRONTEND_URL}/payment/pending`,
       },
       notification_url:
@@ -64,8 +64,11 @@ class MercadoPagoService {
   }
 
   async handleWebhook(data) {
+    console.log(data, 'data')
+     console.log(data.type, 'type')
     if (data.type === "payment") {
       const payment = await Preference.get(data.data.id);
+      console.log(payment, 'payment');
       const order = await Order.findById(payment.body.external_reference);
       if (!order) {
         throw new Error("Order not found");
