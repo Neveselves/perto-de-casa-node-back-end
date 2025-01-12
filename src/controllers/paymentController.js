@@ -33,6 +33,7 @@ class PaymentController {
   webhook = asyncHandler(async (req, res) => {
     try {
       const { type, data } = req.body;
+      console.log(req.body, "REQ BODY");
 
       if (type) {
         await mercadoPagoService.handleWebhook({ type, data });

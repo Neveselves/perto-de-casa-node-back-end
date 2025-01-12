@@ -64,8 +64,6 @@ class MercadoPagoService {
   }
 
   async handleWebhook(data) {
-    console.log(data, "data");
-    console.log(data.type, "type");
     if (data.type === "payment") {
       const client = new MercadoPagoConfig({
         accessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN,
@@ -74,7 +72,7 @@ class MercadoPagoService {
 
       const preference = new Payment(client);
       const payment = await preference.get(data.data.id);
-      console.log(payment, "payment");
+
       const order = await Order.findById(payment.body.external_reference);
       if (!order) {
         throw new Error("Order not found");
