@@ -80,7 +80,7 @@ class MercadoPagoService {
         throw new Error("Order not found");
       }
 
-      switch (payment.body.status) {
+      switch (payment.status) {
         case "approved":
           order.status = "paid";
           for (const item of order.items) {
@@ -98,8 +98,8 @@ class MercadoPagoService {
           break;
       }
 
-      order.paymentId = payment.body.id;
-      order.merchantOrderId = payment.body.merchant_order_id;
+      order.paymentId = payment.id;
+      order.merchantOrderId = payment.merchant_account_id;
       await order.save();
 
       return order;
