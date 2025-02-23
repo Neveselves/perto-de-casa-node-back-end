@@ -1,8 +1,13 @@
-const Hall = require('../models/Hall');
+const Hall = require("../models/Hall");
 
 class HallService {
   async getAllHalls() {
-    return await Hall.find();
+    return await Hall.find(
+      {},
+      {
+        products: { $slice: 10 },
+      }
+    );
   }
 
   async getHallById(id) {
